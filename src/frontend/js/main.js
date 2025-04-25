@@ -39,7 +39,7 @@ const SVG = {
 const plUploader = new plupload.Uploader({
   runtimes: 'html5',
   browse_button: 'file-input',
-  url: '/handle-data.php',
+  url: '/files.php',
   chunk_size: '4mb',
   filters: {
     max_file_size: '500mb'
@@ -244,7 +244,7 @@ function prompt() {
 }
 
 async function updateState() {
-  const response = await fetch('handle-data.php', {
+  const response = await fetch('files.php', {
     headers: {
       'Accept': 'application/json',
     }
