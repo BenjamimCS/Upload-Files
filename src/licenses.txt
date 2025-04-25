@@ -1,0 +1,6 @@
+[Icons]
+  File icons by Icons8:
+  * <a target="_blank" href="https://icons8.com/icon/kAH5EDO4t36D/file">File</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+  * https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/file-text-icon.png
+  Arrow icons:
+  * Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools

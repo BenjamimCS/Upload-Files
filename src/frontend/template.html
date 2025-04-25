@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Upload your file</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-950">
+  <section
+    id="holder"
+    class="mt-40 mx-auto max-w-screen-sm
+           px-2">
+    <form
+			id='form-file' method="POST" enctype="multipart/form-data"
+			class="form-body text-white">
+      <input
+				type="file" name="files" id="file-input"
+        multiple="multiple"
+        class="hidden text-white file:cursor-pointer
+               file:bg-gray-900 file:border-0 file:text-white
+               file:py-2 file:rounded-lg file:px-2
+               mb-2">
+      <section
+				class="flex justify-between
+               bg-gray-800 border-x-1 border-t-1
+						   border-slate-500 rounded-t-md">
+        <label for="file-input" class="text-white">
+          <p class='py-1 px-2 cursor-pointer'>Select your files</p>
+        </label>
+        <input
+					id="submitButton" type="submit" value="Upload"
+          class="block text-white cursor-pointer
+                 py-1 px-2">
+      </section>
+      <section class="bg-gray-900 border-x-1 border-b-1 border-slate-500">
+        <section id="file-list" class="">
+          <ul class='mx-2 py-2 overflow-auto max-h-50'>
+          </ul>
+        </section>
+        <section id='meter' class='border-t-1 border-slate-500'>
+          <!--<div id='divider'></div>-->
+          <p class='text-center'></p>
+          <div class='h-[3px] transition-[width] bg-blue-600'></div>
+        </section>
+      </section>
+    </form>
+  </section>
+</body>
+</html>
