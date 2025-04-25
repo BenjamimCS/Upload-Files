@@ -1,0 +1,9 @@
+**/*.sw[op]
+**/*.log
+/public/**
+!/public/*.php
+/package-lock.json
+
+/node_modules/
+/backup/
+/cache/
