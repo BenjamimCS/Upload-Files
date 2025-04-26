@@ -1,5 +1,6 @@
 import { sha256 } from "js-sha256"
 import plupload from "plupload"
+import Icons from './icons.js'
 
 const fileInput         = document.querySelector('#file-input')
 const fileListContainer = document.querySelector('#file-list')
@@ -16,25 +17,6 @@ const passFieldHolderInHolder = document.createElement('div')
 const meterElement = document.querySelector('section#meter')
 const meterDesc    = document.querySelector('section#meter > p')
 const meterBar     = document.querySelector('section#meter > div')
-
-const SVG = {
-	arrow(data, string = true) {
-    /*data.color, data.width, data.height, data.classes*/
-		const svg = `<!--Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools-->\
-      <svg class="${data.classes}" width="${data.width}" fill="${data.color}" viewBox="0 0 64 64"\
-        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"\
-        role="img" class="iconify iconify--emojione-monotone" preserveAspectRatio="xMidYMid meet">\
-        <path d="M32 2C15.432 2 2 15.432 2 32s13.432 30 30 30s30-13.432 30-30S48.568 2 32 2zm5.143 28.305V49H26.857V30.305H16L32 15l16 15.305H37.143z">\
-        </path>\
-      </svg>`
-		const div = document.createElement('div')
-    div.innerHTML += svg
-
-    return string
-             ? svg
-             : div.firstElementChild
-	},
-}
 
 const plUploader = new plupload.Uploader({
   runtimes: 'html5',
@@ -188,7 +170,7 @@ window.addEventListener('load', updateState)
 
 function FileEntry(metadata, additionalData) {
   const divFoo = document.createElement('div')
-  const svg = SVG.arrow(additionalData)
+  const svg = Icons.create(additionalData, 'arrow')
   divFoo.innerHTML = `\
   <li>
     <a href='/download.php?filename=${metadata.name}'
@@ -196,8 +178,11 @@ function FileEntry(metadata, additionalData) {
        hover:bg-gray-700 rounded-md cursor-pointer'>
       <div class='w-[100%] grow-1 shrink-1 flex overflow-hidden'>
         <section class='shrink-0 flex items-center mr-1'>
-          <img class='h-[15px]' src='/assets/icons8-file-16.png'
-               alt='file icon' draggable='false'>
+          ${Icons.create({
+            height: '20px',
+            width:  '20px',
+            color: '#36c8f6'
+          }, 'file')}
         </section>
         <section class='basis-[content] shrink-1 max-w-[74%]'>
           <p
@@ -256,7 +241,7 @@ async function updateState() {
   appendFilestoList(filesList.files, {
     width:   '15px',  
     height:  '15px',  
-    classes: 'transform-[rotate(.5turn)] fill-green-400'
+    class: ['transform-[rotate(.5turn)]','fill-green-400',]
   })
 
   updateMeter({
