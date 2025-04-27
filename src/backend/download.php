@@ -1,6 +1,11 @@
 <?php
 require_once 'variables.php';
 
+if (!REQUIRED_HTTP_METHODS) {
+  header(HTTP_VERSION .  ' ' . HTTP_CODE_TITLE['405']);
+  die();
+}
+
 if (!isset($_GET['filename'])) {
   header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['400']);
   die();
