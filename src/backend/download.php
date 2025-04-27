@@ -1,11 +1,11 @@
 <?php
+require_once 'variables.php';
 
 if (!isset($_GET['filename'])) {
   header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['400']);
   die();
 }
 
-require_once 'variables.php';
 require_once 'utils.php';
 
 $file_name = $_GET['filename'];
