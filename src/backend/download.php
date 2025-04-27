@@ -19,6 +19,7 @@ $file_fullpath = $file_path . DIRECTORY_SEPARATOR . $file_name;
 
 if (!file_exists(CLOUD_STORAGE_DIR)) {
   header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['500']);
+  die();
 }
 
 if (!file_exists($file_fullpath)) {
