@@ -13,6 +13,7 @@ $storagelimit = 5.24288e8;
 
 if (!file_exists(CLOUD_STORAGE_DIR)) {
   header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['500']);
+  echo http_html_response(500);
   verbose(CLOUD_STORAGE_DIR . ' doesn\'t exists. Exiting...');
   die();
 }
