@@ -129,8 +129,6 @@ formFile.addEventListener('submit', event => {
 
 plUploader.init()
 plUploader.bind('FilesAdded', function(up, files) {
-  uploadInstance = up
-
   if (fileListContainer.classList.contains('hidden')) {
     fileListContainer.classList.remove('hidden')
   }
