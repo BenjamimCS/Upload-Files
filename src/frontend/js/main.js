@@ -137,7 +137,7 @@ plUploader.bind('FilesAdded', function(up, files) {
   appendFilestoList(files, {
     width: '15px',
     height: '15px',
-    classes: 'transition-[transform] fill-red-500'
+    class: ['transition-[transform]', 'fill-red-500']
   })
 })
 plUploader.bind('BeforeUpload', function(up, file) {
