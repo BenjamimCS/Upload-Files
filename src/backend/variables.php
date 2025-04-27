@@ -2,7 +2,7 @@
 define('HTTP_VERSION', array_key_exists('SERVER_PROTOCOL', $_SERVER)
                          ? $_SERVER['SERVER_PROTOCOL']
                          :NULL);
-define('CLOUD_STORAGE_DIR', '../../../../Downloads/Cloud_Storage');
+define('CLOUD_STORAGE_DIR', '../../../../../Downloads/Cloud_Storage/');
 define('HTTP_CODE_TITLE', [
   '200' => '200 Ok',
   '201' => '201 Created',

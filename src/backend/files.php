@@ -3,11 +3,11 @@ define('TEST', false);
 
 if (!TEST):
 # TODO: * read httpd: Access control
-require_once '../src/backend/variables.php';
-require_once '../src/backend/utils.php';
+require_once 'variables.php';
+require_once 'utils.php';
 
 $requesttype = $_SERVER['REQUEST_METHOD'];
-$timeout = new Timeout('../cache/');
+$timeout = new Timeout('../../cache/');
 $storagelimit = 5.24288e8;
 
 if (!file_exists(CLOUD_STORAGE_DIR)) {
@@ -19,15 +19,15 @@ if (!file_exists(CLOUD_STORAGE_DIR)) {
 # the second operand is to force clean cache
 # TODO: add an straightfroward way to clear cache
 if ($timeout->is_expired() || false) {
-  $filelist = new MapManager('../cache/map.json', CLOUD_STORAGE_DIR,
+  $filelist = new MapManager('../../cache/map.json', CLOUD_STORAGE_DIR,
                              storagelimit: $storagelimit);
   $timeout->set_newtime();
-} else $filelist = new MapManager('../cache/map.json', CLOUD_STORAGE_DIR, cache: true);
+} else $filelist = new MapManager('../../cache/map.json', CLOUD_STORAGE_DIR, cache: true);
   
 if ($requesttype == 'GET') { 
   header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['200']);
   header('Content-Type: application/json');
-  header('Content-Length: ' . filesize('../cache/map.json'));
+  header('Content-Length: ' . filesize('../../cache/map.json'));
   echo $filelist->get_map();
   die();
 }

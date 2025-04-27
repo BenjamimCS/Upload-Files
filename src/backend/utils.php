@@ -1,6 +1,6 @@
 <?php
 #$basedir = $_SERVER['DOCUMENT_ROOT'];
-$basedir = '../';
+$basedir = '../../';
 date_default_timezone_set('America/Sao_Paulo');
 
 /**
@@ -38,7 +38,7 @@ function removedoubledash(string $string): string {
 function verbose(string $message,    bool $out = false,
                  bool $json = false, int $ok=1) {
   #$basedir = $_SERVER['DOCUMENT_ROOT'];
-  $basedir = '../cache/';
+  $basedir = '../../cache/';
   $logphpfilename = 'php.log';
   $logphpfilepath = removedoubledash($basedir . DIRECTORY_SEPARATOR . $logphpfilename);
   $filestream = file_exists($logphpfilepath)

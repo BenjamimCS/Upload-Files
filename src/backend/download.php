@@ -5,8 +5,8 @@ if (!isset($_GET['filename'])) {
   die();
 }
 
-require_once '../src/backend/variables.php';
-require_once '../src/backend/utils.php';
+require_once 'variables.php';
+require_once 'utils.php';
 
 $file_name = $_GET['filename'];
 $file_path = realpath(CLOUD_STORAGE_DIR . DIRECTORY_SEPARATOR);
