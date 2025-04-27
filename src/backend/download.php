@@ -4,11 +4,13 @@ require_once 'error.php';
 
 if (!REQUIRED_HTTP_METHODS) {
   header(HTTP_VERSION .  ' ' . HTTP_CODE_TITLE['405']);
+  echo http_html_response(405);
   die();
 }
 
 if (!isset($_GET['filename'])) {
   header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['400']);
+  echo http_html_response(400);
   die();
 }
 
@@ -20,11 +22,13 @@ $file_fullpath = $file_path . DIRECTORY_SEPARATOR . $file_name;
 
 if (!file_exists(CLOUD_STORAGE_DIR)) {
   header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['500']);
+  echo http_html_response(500);
   die();
 }
 
 if (!is_file($file_fullpath)) {
   header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['404']);
+  echo http_html_response(404);
   die();
 }
 $file_size = filesize($file_fullpath);
