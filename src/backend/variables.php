@@ -3,6 +3,9 @@ define('HTTP_VERSION', array_key_exists('SERVER_PROTOCOL', $_SERVER)
                          ? $_SERVER['SERVER_PROTOCOL']
                          :NULL);
 define('CLOUD_STORAGE_DIR', '../../../../../Downloads/Cloud_Storage/');
+define (
+  'REQUIRED_HTTP_METHODS',
+  $_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'HEAD');
 define('HTTP_CODE_TITLE', [
   '200' => '200 Ok',
   '201' => '201 Created',
