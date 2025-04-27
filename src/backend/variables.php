@@ -8,6 +8,8 @@ define('HTTP_CODE_TITLE', [
   '201' => '201 Created',
   '400' => '400 Bad Request',
   '404' => '404 Not Found',
+  '405' => '405 Method Not Allowed',
   '500' => '500 Internal Server Error',
+  '501' => '501 Not Implemented',
   # TODO: implement the others
 ]);
