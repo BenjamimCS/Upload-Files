@@ -1,5 +1,6 @@
 <?php
 require_once 'variables.php';
+require_once 'error.php';
 
 if (!REQUIRED_HTTP_METHODS) {
   header(HTTP_VERSION .  ' ' . HTTP_CODE_TITLE['405']);

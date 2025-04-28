@@ -5,6 +5,7 @@ if (!TEST):
 # TODO: * read httpd: Access control
 require_once 'variables.php';
 require_once 'utils.php';
+require_once 'error.php';
 
 $requesttype = $_SERVER['REQUEST_METHOD'];
 $timeout = new Timeout('../../cache/');
