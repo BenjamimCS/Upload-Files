@@ -22,7 +22,7 @@ if (!file_exists(CLOUD_STORAGE_DIR)) {
   die();
 }
 
-if (!file_exists($file_fullpath)) {
+if (!is_file($file_fullpath)) {
   header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['404']);
   die();
 }
