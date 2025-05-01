@@ -8,7 +8,7 @@ if (!REQUIRED_HTTP_METHODS) {
   die();
 }
 
-if (!isset($_GET['filename'])) {
+if (!isset($_GET['filename']) || !$_GET['filename']) {
   header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['400']);
   echo http_html_response(400);
   die();
