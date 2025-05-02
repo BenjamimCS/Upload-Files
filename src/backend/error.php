@@ -23,7 +23,10 @@ function http_html_response(int|string $code): string {
   </head>
   <body>
     <div id='wrapper' class='w-[100%] flex items-center justify-center bg-gray-950'>
-      <p id='warnning' class='text-3xl text-center italic'>{$code_tip}</p>
+      <div id='container'>
+        <p id='warnning' class='text-3xl text-center italic'>{$code_title}</p>
+        <p class='text-center italic'>{$code_tip}</p>
+      </div>
     </div>
   </body>
   <script>
