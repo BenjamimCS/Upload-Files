@@ -76,6 +76,7 @@ passFieldHolder.appendChild(passFieldHolderInHolder)
 passFieldHolder.appendChild(passButton)
 
 passViewToggleHolder.addEventListener('click', function(event) {
+  const iconPreset = {width: '15px', height: '15px'}
   if (passField.type == 'password') {
     passField.type = 'text'
     passViewToggleHolder.innerHTML = `\
