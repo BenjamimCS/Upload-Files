@@ -27,9 +27,6 @@ const plUploader = new plupload.Uploader({
     max_file_size: '500mb'
   },
   multipart: true,
-  multipart_params: {
-    fullSize: 'foo'
-  }
 })
 
 const filesMap = {
