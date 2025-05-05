@@ -1,4 +1,19 @@
+/** @module Icons
+ * Create SVG icons ready for use
+ */
 export default {
+  /**
+  * Returns inline SVG instance or as `Element` object depending on `string` parameter
+  *
+  * @param {object} data - SVG attributes. See: [mdn docs | svg](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/svg#attributes)
+  * @param {string} [type=file] - The SVG icon name. They are:
+  * - `arrow`
+  * - `file`
+  * - `eye`
+  * - `eyeBlind`
+  * @param {boolean} [string=true] - Whether return an inline SVG `String` or an `Element` instance of it
+  * @returns {string|Element}
+  */
 	create(data, type = 'file', string = true) {
     /*data.color, data.width, data.height, data.class*/
     data.class = Array.isArray(data.class) ? data.class : []
