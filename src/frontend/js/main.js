@@ -61,12 +61,7 @@ passFieldHolder.classList.add('mt-5', 'flex')
 passViewToggleHolder.id = 'passview-toggleholder'
 passViewToggleHolder.classList.add('mx-1','p-1', 'hover:bg-gray-800', 'active:bg-gray-900',
                                    'cursor-pointer', 'rounded-md')
-passViewToggleHolder.innerHTML = `\
-  <svg width="15px" height="15px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"\
-    fill="#ffffff"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 10c0-3.9 3.1-7 7-7s7\
-    3.1 7 7h-1c0-3.3-2.7-6-6-6s-6 2.7-6 6H1zm4 0c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3-3-1.3-3-3zm1\
-    0c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2-2 .9-2 2z"/>\
-  </svg>`
+passViewToggleHolder.innerHTML = Icons.create({width:'15px', height: '15px'}, 'eye')
 
 passFieldHolderInHolder.classList.add('flex', 'items-center', 'border',
                                       'border-slate-500', 'border-solid',)
@@ -79,35 +74,10 @@ passViewToggleHolder.addEventListener('click', function(event) {
   const iconPreset = {width: '15px', height: '15px'}
   if (passField.type == 'password') {
     passField.type = 'text'
-    passViewToggleHolder.innerHTML = `\
-    <svg width="15px" height="15px" fill="#fff" version="1.1"\
-      viewBox="0 0 3.9688 3.9688" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">\
-      <g transform="translate(-24.89 -15)">\
-        <g transform="matrix(.28348 0 0 .28348 24.607 14.717)">\
-          <path transform="matrix(.075591 0 0 .075591 .062992 -3.2252)"\
-            d="m186.23 206.53-163.47-116.77" stroke="#fff"\
-            stroke-linecap="square" stroke-width="10.583"/>\
-          <path d="m8 3c-3.9 0-7 3.1-7 7h1c0-3.3 2.7-6 6-6s6 2.7 6\
-                   6h1c0-3.9-3.1-7-7-7zm0 4c-1.7 0-3 1.3-3\
-                   3 0 1.7 1.3 3 3 3s3-1.3 3-3c0-1.7-1.3-3-3-3zm0\
-                   1c1.1 0 2 0.9 2 2 0 1.1-0.9 2-2 2s-2-0.9-2-2c0-1.1\
-                   0.9-2 2-2z"/>
-        </g>
-      </g>
-    </svg>`
+    passViewToggleHolder.innerHTML = Icons.create(iconPreset, 'eyeBlind')
   } else {
     passField.type = 'password'
-    passViewToggleHolder.innerHTML = `\
-    <svg width="15px" height="15px" viewBox="0 0 16 16"\
-      xmlns="http://www.w3.org/2000/svg" fill="#ffffff">\
-      <path fill-rule="evenodd" clip-rule="evenodd"\
-            d="M1 10c0-3.9 3.1-7 7-7s7 3.1 7\
-               7h-1c0-3.3-2.7-6-6-6s-6 2.7-6 6H1zm4\
-               0c0-1.7 1.3-3 3-3s3 1.3 3\
-               3-1.3 3-3 3-3-1.3-3-3zm1\
-               0c0 1.1.9 2 2 2s2-.9\
-               2-2-.9-2-2-2-2 .9-2 2z"/>\
-    </svg>`
+    passViewToggleHolder.innerHTML = Icons.create(iconPreset, 'eye')
   }
 
   passField.focus()
