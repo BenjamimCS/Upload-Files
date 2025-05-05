@@ -23,7 +23,28 @@ export default {
         <path d="M4,19V5c0-1.657,1.343-3,3-3h7l6,6v11c0,1.657-1.343,3-3,3H7C5.343,22,4,20.657,4,19z"\
           fill="#36c8f6"/>\
         <path d="m14 6v-4l6 6h-4c-1.105 0-2-0.895-2-2z" fill="#2583ef"/>\
-      </svg>`
+      </svg>`,
+      eye: `\
+      <svg width="${data.width}" height="${data.height}" viewBox="0 0 16 16"\
+        xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="${data.class.join(' ')}">\
+        <path fill-rule="evenodd" clip-rule="evenodd"\
+              d="M1 10c0-3.9 3.1-7 7-7s7 3.1 7\
+                 7h-1c0-3.3-2.7-6-6-6s-6 2.7-6 6H1zm4\
+                 0c0-1.7 1.3-3 3-3s3 1.3 3\
+                 3-1.3 3-3 3-3-1.3-3-3zm1\
+                 0c0 1.1.9 2 2 2s2-.9\
+                 2-2-.9-2-2-2-2 .9-2 2z"/>\
+      </svg>`,
+      eyeBlind: `\
+      <svg width="${data.width}" height="${data.height}" fill="#ffffff" version="1.1"
+        viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="${data.class.join(' ')}">\
+        <path d="m1 10c0-3.9 3.1-7 7-7s7 3.1 7 7h-1c0-3.3-2.7-6-6-6s-6\
+        2.7-6 6zm4 0c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3-3-1.3-3-3zm1\
+        0c0 1.1 0.9 2 2 2s2-0.9 2-2-0.9-2-2-2-2 0.9-2 2z" clip-rule="evenodd"\
+        fill-rule="evenodd"/>\
+        <path d="m2.5532 2.5532 10.894 10.894" fill="#fff" stroke="#fff"\
+          stroke-linecap="square" stroke-width="1.0406"/>\
+      </svg>`,
     }
 
 		const svg = icons[type] ?? icons['file']
