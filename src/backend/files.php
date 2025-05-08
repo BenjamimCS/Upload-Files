@@ -25,8 +25,8 @@ if ($timeout->is_expired() || false) {
                              storagelimit: $storagelimit);
   $timeout->set_newtime();
 } else $filelist = new MapManager('../../cache/map.json', CLOUD_STORAGE_DIR, cache: true);
-  
-if ($requesttype == 'GET') { 
+
+if ($requesttype == 'GET') {
   header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['200']);
   header('Content-Type: application/json');
   header('Content-Length: ' . filesize('../../cache/map.json'));

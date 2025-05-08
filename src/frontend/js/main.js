@@ -9,7 +9,7 @@ const formFile          = document.querySelector('#form-file')
 
 const passField  = document.createElement('input')
 const passButton = document.createElement('input')
-      
+
 const passFieldHolder         = document.createElement('div')
 const passViewToggleHolder    = document.createElement('div')
 const passFieldHolderInHolder = document.createElement('div')

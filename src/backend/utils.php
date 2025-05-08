@@ -73,7 +73,7 @@ function verbose(string $message,    bool $out = false,
  *                          directory. If `0` it has no limit.
  * @param bool $cache Reuse the already created *map file*
  *                    Fails if there's no *map file*
- * 
+ *
  * The JSON file must have the following structure:
  * JSON_FILE->files --> an array of files
  * JSON_FILE->empty --> boolean value if folder is empty
@@ -186,7 +186,7 @@ class MapManager {
   }
 
   /**
-   *  Populate `$this->map_filejson['files']` with file entries 
+   *  Populate `$this->map_filejson['files']` with file entries
    * */
   protected function scandir() {
     $this->map_filejson['files'] = array();
@@ -205,7 +205,7 @@ class MapManager {
   # going depracted, the script is scanning two times the directory
   # ($this->scandir and $this->set_foldersize)
   #  1. the best solution is to keep the function and update it only
-  #  2. the other is to use Trait to reuse some functions 
+  #  2. the other is to use Trait to reuse some functions
   #  3. map the $this->map_filejson to sum each filesize and add to
   #    the key $this->map_filejson['currentFolderSize']
   protected function set_foldersize() {
@@ -263,7 +263,7 @@ class MapManager {
  * @param readonly string $basedir The folder where to find the
  * `timeout` file
  * @param int $timeout: (Default: `3600 * 36` - 1.5 day)
- * 
+ *
  */
 class Timeout {
   protected string $basedir;
@@ -271,7 +271,7 @@ class Timeout {
   protected string $timeout_filepath;
   protected int $nowtime;
   protected int $prevtime;
-  
+
   public function __construct(string $basedir, int $timeout = (3600 * 36)) {
     $this->basedir = $basedir;
     $this->timeout = $timeout;
