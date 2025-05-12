@@ -2,6 +2,7 @@
 **/*.log
 /package-lock.json
 
+vendor/
 /node_modules/
 /public/
 /backup/
