@@ -1,3 +1,4 @@
+**/composer.lock
 **/*.sw[op]
 **/*.log
 /package-lock.json
