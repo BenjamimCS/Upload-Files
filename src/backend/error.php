@@ -4,7 +4,7 @@ require_once 'variables.php';
 /**
  * Returns a descripitive HTTP response in HTML format
  *
- * @param init|string $code
+ * @param int|string $code
  * The HTTP response status code
  * @return string
  */
