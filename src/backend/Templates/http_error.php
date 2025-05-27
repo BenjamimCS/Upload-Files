@@ -1,5 +1,5 @@
 <?php
-require_once 'variables.php';
+require_once getenv('PHP_ROOT') . '/Resources/variables.php';
 
 /**
  * Returns a descripitive HTTP response in HTML format

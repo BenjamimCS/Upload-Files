@@ -1,6 +1,6 @@
 <?php
-require_once 'variables.php';
-require_once 'error.php';
+require_once getenv('PHP_ROOT') . '/Resources/variables.php';
+require_once getenv('PHP_ROOT') . '/Templates/http_error.php';
 
 if (!REQUIRED_HTTP_METHODS) {
   header(HTTP_VERSION .  ' ' . HTTP_CODE_TITLE['405']);
@@ -14,7 +14,7 @@ if (!isset($_GET['filename']) || !$_GET['filename']) {
   die();
 }
 
-require_once 'utils.php';
+require_once getenv('PHP_ROOT') . '/Resources/utils.php';
 
 $file_name = $_GET['filename'];
 $file_path = realpath(CLOUD_STORAGE_DIR . DIRECTORY_SEPARATOR);

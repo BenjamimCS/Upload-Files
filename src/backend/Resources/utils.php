@@ -1,4 +1,5 @@
 <?php
+require_once getenv('PHP_ROOT') . '/vendor/autoload.php';
 #$basedir = $_SERVER['DOCUMENT_ROOT'];
 $basedir = '../../';
 date_default_timezone_set('America/Sao_Paulo');

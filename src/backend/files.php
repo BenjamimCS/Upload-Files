@@ -3,9 +3,9 @@ define('TEST', false);
 
 if (!TEST):
 # TODO: * read httpd: Access control
-require_once 'variables.php';
-require_once 'utils.php';
-require_once 'error.php';
+require_once getenv('PHP_ROOT') . '/Resources/variables.php';
+require_once getenv('PHP_ROOT') . '/Resources/utils.php';
+require_once getenv('PHP_ROOT') . '/Templates/http_error.php';
 
 $requesttype = $_SERVER['REQUEST_METHOD'];
 $timeout = new Timeout('../../cache/');
