@@ -141,7 +141,8 @@ class MapManager {
     /* Must be called after adding file to the directory
      * otherwise it returns false
      * */
-    $filepath = $this->filesdir_path . DIRECTORY_SEPARATOR . $filename;
+    $bfilename = basename($filename);
+    $filepath = $this->filesdir_path . DIRECTORY_SEPARATOR . $bfilename;
     verbose('Check existence of file '. $filepath);
     if (!file_exists($filepath)) {
       verbose($filepath . ' doesn\'t exists.');
