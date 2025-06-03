@@ -97,7 +97,7 @@ class MapManager {
 
   public function __construct(string $map_filepath, string $filesdir_path,
                               int $storagelimit = 0, bool $cache = false,) {
-    $this->filesdir_path                = $filesdir_path;
+    $this->filesdir_path                = rtrim(removedoubledash($filesdir_path), '/');
     $this->map_filepath                 = $map_filepath;
     $this->storagelimit                 = $storagelimit;
     $this->folder_currentsize           = 0;
