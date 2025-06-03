@@ -16,7 +16,7 @@ if (!isset($_GET['filename']) || !$_GET['filename']) {
 
 require_once getenv('PHP_ROOT') . '/Resources/utils.php';
 
-$file_name = $_GET['filename'];
+$file_name = basename($_GET['filename']);
 $file_path = realpath(CLOUD_STORAGE_DIR . DIRECTORY_SEPARATOR);
 $file_fullpath = $file_path . DIRECTORY_SEPARATOR . $file_name;
 
