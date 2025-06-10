@@ -58,10 +58,9 @@ if (!file_exists($uploadfolder)) {
   die();
 }
 
-$filename = basename(
-  isset($_REQUEST['name'])
-  ? $_REQUEST['name']
-  : $_FILES['file']['name']);
+$filename = trim(basename(isset($_REQUEST['name'])
+                          ? $_REQUEST['name']
+                          : $_FILES['file']['name']));
 verbose("Filename: {$filename}");
 $filepath = removedoubledash($uploadfolder . DIRECTORY_SEPARATOR . $filename);
 verbose("Save location: {$filepath}");
