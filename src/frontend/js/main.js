@@ -139,7 +139,7 @@ function FileEntry(metadata, additionalData) {
   const svg = Icons.create(additionalData, 'arrow')
   divFoo.innerHTML = `\
   <li>
-    <a href='/download.php?filename=${encodeURIComponent(metadata.name)}'
+    <a href='/download.php?filename=${percentEncode(metadata.name)}'
        class='flex w-[100%] p-1 overflow-hidden active:bg-gray-800
        hover:bg-gray-700 rounded-md cursor-pointer'>
       <div class='w-[100%] grow-1 shrink-1 flex overflow-hidden'>
