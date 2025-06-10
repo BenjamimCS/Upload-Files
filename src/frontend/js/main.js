@@ -271,3 +271,23 @@ function updateMeter(amount) {
   meterDesc.innerHTML = `${formatSize(amount.current)}/${formatSize(amount.total)}`
   meterBar.style.width = `${percentage}%`
 }
+
+/**
+* Fix some characters that aren't encoded by `encodeURIComponent`
+* @param {String} targetStr - String to be percent-encoded
+* @returns {String}
+*/
+function percentEncode(targetStr) {
+  const PATTERN = /[!*()']/g
+  let percentEncoded = encodeURIComponent(targetStr)
+  let matches = percentEncoded.match(PATTERN)
+
+  if (!matches) return percentEncoded
+
+  for (let match of matches) {
+    let hexChar = match.charCodeAt(0).toString(16).toUpperCase()
+    percentEncoded = percentEncoded.replace(match, '%' + hexChar)
+  }
+
+  return percentEncoded
+}
