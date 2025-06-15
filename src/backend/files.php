@@ -1,8 +1,12 @@
 <?php
 define('TEST', false);
 
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 if (!TEST):
 # TODO: * read httpd: Access control
+require_once getenv('PHP_ROOT') . '/vendor/autoload.php';
 require_once getenv('PHP_ROOT') . '/Resources/variables.php';
 require_once getenv('PHP_ROOT') . '/Resources/utils.php';
 require_once getenv('PHP_ROOT') . '/Templates/http_error.php';
@@ -31,6 +35,30 @@ if ($requesttype == 'GET') {
   header('Content-Type: application/json');
   header('Content-Length: ' . filesize('../../cache/map.json'));
   echo $filelist->get_map();
+  die();
+}
+
+Dotenv\Dotenv::createImmutable(getenv('PHP_ROOT'))->load();
+
+try {
+  $bearer_token = explode(' ', isset($_COOKIE['token'])
+    ? $_COOKIE['token']
+    : 'Bearer 0');
+
+  verbose('\'token\' cookie: ' . print_r($bearer_token, true));
+
+  if (count($bearer_token) < 2 || !$bearer_token[1]) {
+    verbose('Invalid token');
+    header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['401']);
+    die();
+  }
+
+  $token = $bearer_token[1];
+
+  $decoded = JWT::decode($token, new Key($_ENV['SECRET'], 'HS256'));
+
+} catch(Firebase\JWT\SignatureInvalidException) {
+  header(HTTP_VERSION . ' ' . HTTP_CODE_TITLE['401']);
   die();
 }
 
