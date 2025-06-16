@@ -1,5 +1,7 @@
 <?php
 require_once getenv('PHP_ROOT') . '/vendor/autoload.php';
+
+Dotenv\Dotenv::createImmutable(getenv('PHP_ROOT'))->load();
 #$basedir = $_SERVER['DOCUMENT_ROOT'];
 $basedir = '../../';
 date_default_timezone_set('America/Sao_Paulo');
@@ -198,6 +200,9 @@ class MapManager {
       $this->map_filejson['files'][] = [
         'name' => $entry,
         'size' => filesize(realpath($this->filesdir_path. DIRECTORY_SEPARATOR . $entry)),
+        'hash' => hash_hmac_file('sha256',
+                                  $this->filesdir_path . DIRECTORY_SEPARATOR . $entry,
+                                  $_ENV['SALT_1']),
         'uploaded' => true,
       ];
     }
