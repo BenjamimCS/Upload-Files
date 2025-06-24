@@ -1,6 +1,8 @@
 import { sha256 } from "js-sha256"
 import plupload from "plupload"
-import Icons from './icons.js'
+import { formatSize } from "./utils"
+import Icons from "./Components/Icons"
+import FileEntry from "./Components/FileEntry"
 
 const fileInput         = document.querySelector('#file-input')
 const fileListContainer = document.querySelector('#file-list')
@@ -134,55 +136,6 @@ plUploader.bind('Error', (up,error) => {
 plUploader.bind('UploadComplete', updateState)
 window.addEventListener('load', updateState)
 
-function FileEntry(metadata, additionalData) {
-  const divFoo = document.createElement('div')
-  const svg = Icons.create(additionalData, 'arrow')
-  divFoo.innerHTML = `\
-  <li>
-    <a href='/download?filename=${percentEncode(metadata.name)}'
-       class='flex w-[100%] p-1 overflow-hidden active:bg-gray-800
-       hover:bg-gray-700 rounded-md cursor-pointer'>
-      <div class='w-[100%] grow-1 shrink-1 flex overflow-hidden'>
-        <section class='shrink-0 flex items-center mr-1'>
-          ${Icons.create({
-            height: '20px',
-            width:  '20px',
-            color: '#36c8f6'
-          }, 'file')}
-        </section>
-        <section class='basis-[content] shrink-1 max-w-[74%]'>
-          <p
-            class='truncate cursor-text
-                   text-nowrap break-keep'>${metadata.name}</p>
-        </section>
-        <section class='grow-1 shrink-0 ml-1'> <!-- -->
-          <p class='text-right'>${formatSize(metadata.size)}</p>
-        </section>
-      </div>
-      <div class='grow-0 shrink-0 flex items-center pl-1 arrow'>
-        ${svg}
-        <!--<svg fill="${metadata.uploaded ? '#3cde3e' : 'red'}" width="25px" height="25px"
-             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M7.8 10a2.2 2.2 0 0 0 4.4 0 2.2 2.2 0 0 0-4.4 0z"/>
-        </svg> -->
-      </div>
-    </a>
-  </li>`
-
-  const liEl = divFoo.firstElementChild
-  liEl.children[0].addEventListener('dragstart', event => event.preventDefault())
-
-  return liEl
-}
-
-function formatSize(size, base = 2) { // base 2
-  return size < base ** 10
-    ? `${size} B`
-    : size < base ** 20
-    ? `${(size/base**10).toFixed(2)} KiB`
-    : `${(size/base**20).toFixed(2)} MiB`
-}
-
 function doPass(password) {
   const pass = '93e3afc5cd5a969594deb2ecc3a9d1570252e28f14015cc91abf28180b6bb4d2'
   return sha256(password) === pass
@@ -272,22 +225,3 @@ function updateMeter(amount) {
   meterBar.style.width = `${percentage}%`
 }
 
-/**
-* Fix some characters that aren't encoded by `encodeURIComponent`
-* @param {String} targetStr - String to be percent-encoded
-* @returns {String}
-*/
-function percentEncode(targetStr) {
-  const PATTERN = /[!*()']/g
-  let percentEncoded = encodeURIComponent(targetStr)
-  let matches = percentEncoded.match(PATTERN)
-
-  if (!matches) return percentEncoded
-
-  for (let match of matches) {
-    let hexChar = match.charCodeAt(0).toString(16).toUpperCase()
-    percentEncoded = percentEncoded.replace(match, '%' + hexChar)
-  }
-
-  return percentEncoded
-}
