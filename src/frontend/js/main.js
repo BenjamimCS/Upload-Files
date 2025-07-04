@@ -36,7 +36,8 @@ const filesMap = {
   staged: {
     entry: Array(),
     instance: Array(),
-  }
+  },
+  uploadStatus: null,
 }
 
 let currentOnUploading = Object()
@@ -80,13 +81,19 @@ plUploader.bind('BeforeUpload', function(up, file) {
     .children[1] // div >
     .children[0] // svg
   currentOnUploading.svg.classList.replace('fill-red-500', 'fill-purple-400')
+  up.setOption({
+    multipart_params: {
+      size: file.size
+    }
+  })
 })
-plUploader.bind('FileUploaded', function (up, file) {
+plUploader.bind('FileUploaded', function (up, file, result) {
   // changing entry state
 	currentOnUploading.svg.classList.replace('fill-purple-400', 'fill-green-400')
 	currentOnUploading.svg.classList.toggle('transform-[rotate(.5turn)]')
 
   filesMap.uploaded.push(currentOnUploading.item[0])
+  filesMap.uploadStatus = result.status
   currentOnUploading = {}
 
 })
