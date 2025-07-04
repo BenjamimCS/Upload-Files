@@ -193,3 +193,23 @@ function updateMeter(amount) {
   meterBar.style.width = `${percentage}%`
 }
 
+function login(credential) {
+  const payload = new FormData()
+  const passwordHash = sha256(credential)
+  data.append('password', passwordHash)
+
+  fetch('/login', {
+    method: 'POST',
+    body: payload
+  }).then(r => {
+    if (!r.ok) throw Error(r.headers)
+    invalidCredentialsBox.hide()
+    loginField.hide()
+    loginField.setValue('')
+    plUploader.start()
+  }).catch(e => {
+    invalidCredentialsBox.focus() // called first if already on DOM
+    invalidCredentialsBox.show()
+    loginField.setValue('')
+  })
+}
