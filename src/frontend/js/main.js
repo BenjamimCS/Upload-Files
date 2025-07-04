@@ -96,7 +96,15 @@ plUploader.bind('FileUploaded', function (up, file, result) {
 })
 
 plUploader.bind('Error', (up,error) => {
-  console.log(error)
+  filesMap.uploadStatus = error.status
+  const target = document.querySelectorAll(`#${error.file.id} svg`)[1]
+    target.classList.replace('fill-purple-400', 'fill-red-500')
+
+  if (!loginField.visible) loginField.show()
+
+  invalidCredentialsBox.focus()
+  loginField.focus()
+})
 })
 plUploader.bind('UploadComplete', updateState)
 window.addEventListener('load', updateState)
