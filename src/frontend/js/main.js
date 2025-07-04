@@ -2,23 +2,22 @@ import { sha256 } from "js-sha256"
 import plupload from "plupload"
 import { formatSize } from "./utils"
 import Icons from "./Components/Icons"
+import AlertBox  from "./Components/AlertBox"
 import FileEntry from "./Components/FileEntry"
+import Login from "./Components/Login"
 
 const fileInput         = document.querySelector('#file-input')
 const fileListContainer = document.querySelector('#file-list')
 const fileList          = document.querySelector('#file-list > ul')
 const formFile          = document.querySelector('#form-file')
-
-const passField  = document.createElement('input')
-const passButton = document.createElement('input')
-      
-const passFieldHolder         = document.createElement('div')
-const passViewToggleHolder    = document.createElement('div')
-const passFieldHolderInHolder = document.createElement('div')
+const loginField        = new Login(formFile)
 
 const meterElement = document.querySelector('section#meter')
 const meterDesc    = document.querySelector('section#meter > p')
 const meterBar     = document.querySelector('section#meter > div')
+const invalidCredentialsBox = new AlertBox('Invalid credentials.',
+                                           meterElement.parentElement,
+                                           'error')
 
 const plUploader = new plupload.Uploader({
   runtimes: 'html5',
@@ -42,45 +41,6 @@ const filesMap = {
 let currentOnUploading = Object()
 
 fileList.classList.add('text-white')
-passField.type = 'password'
-passField.id   = 'passfield'
-passField.classList.add('text-white','outline-none', 'border-box',
-                        'ml-1')
-passButton.value = 'Log in'
-passButton.type  = 'submit'
-passButton.id    = 'loginButton'
-passButton.classList.add('text-white', 'cursor-pointer',
-                         'bg-gray-800', 'py-1', 'rounded-r-lg',
-                         'border-t-1', 'border-r-1', 'border-b-1',
-                         'border-gray-800', 'px-2')
-
-passFieldHolder.id = 'passfield-holder'
-passFieldHolder.classList.add('mt-5', 'flex')
-
-passViewToggleHolder.id = 'passview-toggleholder'
-passViewToggleHolder.classList.add('mx-1','p-1', 'hover:bg-gray-800', 'active:bg-gray-900',
-                                   'cursor-pointer', 'rounded-md')
-passViewToggleHolder.innerHTML = Icons.create({width:'15px', height: '15px'}, 'eye')
-
-passFieldHolderInHolder.classList.add('flex', 'items-center', 'border',
-                                      'border-slate-500', 'border-solid',)
-passFieldHolderInHolder.appendChild(passField)
-passFieldHolderInHolder.appendChild(passViewToggleHolder)
-passFieldHolder.appendChild(passFieldHolderInHolder)
-passFieldHolder.appendChild(passButton)
-
-passViewToggleHolder.addEventListener('click', function(event) {
-  const iconPreset = {width: '15px', height: '15px'}
-  if (passField.type == 'password') {
-    passField.type = 'text'
-    passViewToggleHolder.innerHTML = Icons.create(iconPreset, 'eyeBlind')
-  } else {
-    passField.type = 'password'
-    passViewToggleHolder.innerHTML = Icons.create(iconPreset, 'eye')
-  }
-
-  passField.focus()
-})
 
 formFile.addEventListener('submit', event => {
   event.preventDefault()
