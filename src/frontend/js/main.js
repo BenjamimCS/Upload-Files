@@ -46,17 +46,14 @@ fileList.classList.add('text-white')
 
 formFile.addEventListener('submit', event => {
   event.preventDefault()
-  const submitterEl = event.submitter.id
-  if(submitterEl == 'submitButton' && passField.parentNode){
-    prompt()
-    return
-  }
-  else if (doPass(passField.value)) {
-    plUploader.start()
-    return
-  }
+  if (!plUploader.files.length) return
+  if (event.submitter.id === 'loginButton') {
+    if (loginField.isEmpty()) return
 
-  window.alert('FAILED: refill the credentials')
+    login(loginField.getValue())
+    return
+  }
+  plUploader.start()
 })
 
 plUploader.init()
