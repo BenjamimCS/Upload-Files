@@ -129,7 +129,6 @@ async function updateState() {
   let jsonFilesList = await response.text();
   let filesList     = JSON.parse(jsonFilesList)
   removeAllChildNodes(fileList)
-  removeFilesFromStage()
   appendFilestoList(filesList.files, {
     width:   '15px',  
     height:  '15px',  
@@ -150,7 +149,6 @@ function removeAllChildNodes(NodeObj)  {
     })
   }
   filesMap.uploaded = Array()
-  removeFilesFromStage()
 }
 
 function appendFilestoList(arrayOfFiles, adData) {
