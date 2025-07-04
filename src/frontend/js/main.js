@@ -105,8 +105,17 @@ plUploader.bind('Error', (up,error) => {
   invalidCredentialsBox.focus()
   loginField.focus()
 })
+plUploader.bind('UploadComplete', function(up, files) {
+  if (filesMap.uploadStatus >= 400) {
+    up.files.map((file) => {
+      file.status = plupload.QUEUED
+    })
+    return
+  }
+
+  removeFilesFromStage()
+  updateState()
 })
-plUploader.bind('UploadComplete', updateState)
 window.addEventListener('load', updateState)
 
 function doPass(password) {
