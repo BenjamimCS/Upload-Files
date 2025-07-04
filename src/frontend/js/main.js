@@ -6,7 +6,7 @@ import AlertBox  from "./Components/AlertBox"
 import FileEntry from "./Components/FileEntry"
 import Login from "./Components/Login"
 
-const fileInput         = document.querySelector('#file-input')
+const fileDialogButton  = document.querySelector('#file-dialog-btn')
 const fileListContainer = document.querySelector('#file-list')
 const fileList          = document.querySelector('#file-list > ul')
 const formFile          = document.querySelector('#form-file')
@@ -21,7 +21,7 @@ const invalidCredentialsBox = new AlertBox('Invalid credentials.',
 
 const plUploader = new plupload.Uploader({
   runtimes: 'html5',
-  browse_button: 'file-input',
+  browse_button: fileDialogButton,
   url: '/files.php',
   chunk_size: '4mb',
   filters: {
