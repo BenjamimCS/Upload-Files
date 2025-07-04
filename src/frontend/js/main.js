@@ -22,7 +22,7 @@ const invalidCredentialsBox = new AlertBox('Invalid credentials.',
 const plUploader = new plupload.Uploader({
   runtimes: 'html5',
   browse_button: fileDialogButton,
-  url: '/files.php',
+  url: '/files',
   chunk_size: '4mb',
   filters: {
     max_file_size: '500mb'
