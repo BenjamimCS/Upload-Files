@@ -151,12 +151,26 @@ async function updateState() {
 }
 
 function removeAllChildNodes(NodeObj)  {
-  if (NodeObj.hasChildNodes()) {
-    const entryList = Array.from(NodeObj.childNodes)
-    entryList.forEach(entry => {
-      NodeObj.removeChild(entry)
-    })
+  if (!(NodeObj instanceof Node)) throw new TypeError('NodeObj doesn\'t extends Node')
+
+  let hasChildNodes = false
+  let childNodes = null
+
+  if (NodeObj instanceof Element) {
+    hasChildNodes = Boolean(NodeObj.childElementCount)
+    childNodes = NodeObj.children
+  } else {
+    hasChildNodes = NodeObj.hasChildNodes()
+    childNodes    = NodeObj.childNodes
   }
+
+  if (!hasChildNodes) return
+
+  const entryList = Array.from(childNodes)
+  entryList.forEach(entry => {
+    NodeObj.removeChild(entry)
+  })
+
   filesMap.uploaded = Array()
 }
 
