@@ -139,8 +139,8 @@ async function updateState() {
   let filesList     = JSON.parse(jsonFilesList)
   removeAllChildNodes(fileList)
   appendFilestoList(filesList.files, {
-    width:   '15px',  
-    height:  '15px',  
+    width:   '15px',
+    height:  '15px',
     class: ['transform-[rotate(.5turn)]','fill-green-400',]
   })
 
@@ -182,7 +182,7 @@ function appendFilestoList(arrayOfFiles, adData) {
 
 function isFileStaged(stagedFiles, toStageFile) {
   if (!stagedFiles.length) return
-  
+
   return stagedFiles.includes(toStageFile)
 }
 
